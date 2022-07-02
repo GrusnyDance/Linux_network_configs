@@ -128,9 +128,29 @@ IP адреса шлюза у сети 10.10.0.0/18:
 
 [Документация по iptables](https://www.opennet.ru/docs/RUS/iptables/)
 
+![task_4_2](./screens/4.2.png)
+<b>/etc/firewall машина 1</b>
 
+![task_4_3](./screens/4.3.png)
+<b>/etc/firewall машина 2</b>
 
+После того как сработали запрещающие правила, они не заменяются разрешающими
 
+**Запуск скриптов**
+
+```
+chmod +x /etc/firewall.sh
+```
+![task_4_4](./screens/4.4.png)
+<b>iptables -L</b>
+
+![task_4_5](./screens/4.5.png)
+<b>iptables -L</b>
+
+### Утилита nmap
+
+![task_4_6](./screens/4.6.png)
+<b>вывод команды nmap</b>
 
 
 
