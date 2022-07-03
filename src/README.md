@@ -152,9 +152,32 @@ chmod +x /etc/firewall.sh
 ![task_4_6](./screens/4.6.png)
 <b>вывод команды nmap</b>
 
+## Part 5. Статическая маршрутизация сети
 
+### 5.1. Настройка адресов машин
 
+![task_5_1](./screens/5.1.png)
+<b>машина 1</b>
 
+![task_5_2](./screens/5.2.png)
+<b>машина 2</b>
+
+![task_5_3](./screens/5.3.png)
+<b>машина 3</b>
+
+![task_5_4](./screens/5.4.png)
+<b>машина 4</b>
+
+![task_5_5](./screens/5.5.png)
+<b>машина 5</b>
+
+**Пинг ws22 с ws21**
+
+![task_5_6](./screens/5.6.png)
+
+**Пинг r1 с ws11**
+
+![task_5_7](./screens/5.7.png)
 
 
 
