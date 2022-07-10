@@ -254,6 +254,7 @@ vim /etc/dhcp/dhcpd.conf
 В файле resolv.conf прописать nameserver 8.8.8.8.
 
 ![task_6_2](./screens/6.2.png)
+<b>настройка не имеет смысла</b>
 
 `systemctl restart isc-dhcp-server`
 
@@ -285,5 +286,69 @@ vim /etc/dhcp/dhcpd.conf
 **Запросить с ws21 обновление ip адреса**
 
 ![task_6_8](./screens/6.8.png)
+
+## Part 7. NAT
+
+В файле /etc/apache2/ports.conf на ws22 и r1 изменить строку Listen 80 на Listen 0.0.0.0:80, то есть сделать сервер Apache2 общедоступным
+
+`apt install apache2`
+
+![task_7_1](./screens/7.1.png)
+
+![task_7_2](./screens/7.2.png)
+
+Запустить веб-сервер Apache командой service apache2 start на ws22 и r1
+
+Добавить в фаервол, созданный по аналогии с фаерволом из Части 4, на r2 следующие правила:
+
+- Удаление правил в таблице filter - iptables -F
+
+- Удаление правил в таблице "NAT" - iptables -F -t nat
+
+- Отбрасывать все маршрутизируемые пакеты - iptables --policy FORWARD DROP
+
+![task_7_3](./screens/7.3.png)
+
+Проверить соединение между ws22 и r1 командой ping
+
+![task_7_4](./screens/7.4.png)
+
+Разрешить маршрутизацию всех пакетов протокола ICMP, проверить соединение между ws22 и r1 командой ping
+
+![task_7_5](./screens/7.5.png)
+
+![task_7_6](./screens/7.6.png)
+
+Добавить в файл ещё два правила:
+
+- Включить SNAT, а именно маскирование всех локальных ip из локальной сети, находящейся за r2 (по обозначениям из Части 5 - сеть 10.20.0.0)
+- Включить DNAT на 8080 порт машины r2 и добавить к веб-серверу Apache, запущенному на ws22, доступ извне сети
+
+![task_7_7](./screens/7.7.png)
+
+Проверить соединение по TCP для SNAT, соединение по TCP для DNAT
+
+![task_7_8](./screens/7.8.png)
+
+![task_7_9](./screens/7.9.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
